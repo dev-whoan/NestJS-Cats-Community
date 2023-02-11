@@ -1,18 +1,28 @@
+import { AuthService } from './../../auth/auth.service';
 import { Test, TestingModule } from '@nestjs/testing';
+import { CatsService } from '../service/cats.service';
 import { CatsController } from './cats.controller';
+import { CatsRepository } from '../data/cats.repository';
+import { JwtService } from '@nestjs/jwt';
 
-describe('CatsController', () => {
-  let controller: CatsController;
+describe('Unit Test', () => {
+  let authService: AuthService;
+  let jwtService: JwtService;
+  let catsRepository: CatsRepository;
+  let catsController: CatsController;
+  let catsService: CatsService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [CatsController],
-    }).compile();
-
-    controller = module.get<CatsController>(CatsController);
+    jwtService = new JwtService({
+      secret: 'abcdef.1234567890abcdef',
+      signOptions: { expiresIn: '1y' },
+    });
+    authService = new AuthService(catsRepository, jwtService);
+    catsService = new CatsService(catsRepository);
+    catsController = new CatsController(catsService, authService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(catsController).toBeDefined();
   });
 });

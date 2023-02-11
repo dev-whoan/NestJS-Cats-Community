@@ -1,4 +1,4 @@
-import { Cat } from 'src/cats/data/cats.schema';
+import { Cat } from '../data/cats.schema';
 import { multerOptions } from '../../common/utils/multer.options';
 import { ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { CatsService } from '../service/cats.service';
@@ -13,10 +13,10 @@ import {
 } from '@nestjs/common';
 import { CatRequestDto } from '../data/dto/cats.request.dto';
 import { ReadOnlyCatDto } from '../data/dto/cat.dto';
-import { AuthService } from 'src/auth/auth.service';
-import { LoginRequestDto } from 'src/auth/jwt/dto/login.request.dto';
-import { JwtAuthGuard } from 'src/auth/jwt/jwt.guard';
-import { CurrentCat } from 'src/common/decorators/cat.decorator';
+import { AuthService } from '../../auth/auth.service';
+import { LoginRequestDto } from '../../auth/jwt/dto/login.request.dto';
+import { JwtAuthGuard } from '../../auth/jwt/jwt.guard';
+import { CurrentCat } from '../../common/decorators/cat.decorator';
 import { FilesInterceptor } from '@nestjs/platform-express';
 
 @Controller('cats')

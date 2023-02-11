@@ -2,7 +2,7 @@ import { Comments, CommentsSchema } from './../comments/data/comments.schema';
 import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MulterModule } from '@nestjs/platform-express';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
 import { CatsController } from './controller/cats.controller';
 import { CatsRepository } from './data/cats.repository';
 import { Cat, CatSchema } from './data/cats.schema';
